@@ -6,8 +6,18 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit113da8c4971213b37c7f95c600214c7b
 {
-    public static $fallbackDirsPsr4 = array (
-        0 => __DIR__ . '/..' . '/ytech/php-classes/src',
+    public static $prefixLengthsPsr4 = array (
+        'Y' => 
+        array (
+            'Ytech\\' => 6,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Ytech\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ytech/php-classes/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -41,7 +51,8 @@ class ComposerStaticInit113da8c4971213b37c7f95c600214c7b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->fallbackDirsPsr4 = ComposerStaticInit113da8c4971213b37c7f95c600214c7b::$fallbackDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit113da8c4971213b37c7f95c600214c7b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit113da8c4971213b37c7f95c600214c7b::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit113da8c4971213b37c7f95c600214c7b::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit113da8c4971213b37c7f95c600214c7b::$classMap;
 
