@@ -1,0 +1,21 @@
+{
+	"name":"willsousaz/ecommerce",
+	"autors" : [
+		{
+		"name" : "Loja Virtual",
+		"email": "yuri@ytechsolucoes.com.br"
+		}
+	],
+
+    "require": {
+        "rain/raintpl": "3.0.0",
+        "phpmailer/phpmailer":"5.2.22",
+        "slim/slim":"2.0"
+    },
+
+    "autoload":{
+    	"psr-4":{
+    		"": "vendor\\ytech\\php-classes\\src"
+    	}
+    }
+}
