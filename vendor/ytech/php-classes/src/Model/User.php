@@ -72,5 +72,13 @@
 
 		$_SESSION[User::SESSION] = null;
 	}
+
+	public static function listAll(){
+		$sql = new Sql();
+	// retorna pra rota;
+		return $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) ORDER BY  b.desperson");
+
+	}
+
 	}
  ?>

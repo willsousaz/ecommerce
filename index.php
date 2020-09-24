@@ -11,7 +11,8 @@
 
 	$app = new Slim();
 
-	$app->config('debug',true);
+	$app->config('debug',false);
+
 
 	$app->get('/',function(){
 
@@ -56,6 +57,79 @@
 		header("Location: /admin/login");
 		exit;
 	});
+
+	// Inicio Rotas Administradores;
+
+	$app->get("/admin/users", function(){
+
+	// Verifica se esta logado e se é Administrador;
+
+		User::verifyLogin();
+
+	// Lista todos os usuários;
+
+		$users = User::listAll();
+
+		$page = new PageAdmin();
+
+		$page->setTpl("users",array("users"=>$users));
+
+
+	});
+
+	// Rota Create
+
+
+	$app->get("/admin/users/create", function(){
+
+	// Verifica se esta logado e se é Administrador;
+
+		User::verifyLogin();
+
+	// Lista todos os usuários;
+
+		$page = new PageAdmin();
+
+		$page->setTpl("users-create");
+
+	});
+
+	// Rota Deletar
+
+	$app->get("admin/users/:iduser/delete", function($iduser){
+
+	// Verifica se esta logado e se é Administrador;
+
+		User::verifyLogin();
+
+	});
+
+	// Rota Update
+
+	$app->get("/admin/users/:iduser", function($iduser){
+
+	// Verifica se esta logado e se é Administrador;
+
+		User::verifyLogin();
+
+	// Lista todos os usuários;
+
+		$page = new PageAdmin();
+
+		$page->setTpl("users-update");
+
+	});
+
+	$app->post("admin/users/:iduser", function($iduser){
+
+	// Verifica se esta logado e se é Administrador;
+
+		User::verifyLogin();
+
+	});
+
+
+	//Fim Rotas Administradores;
 
 	$app->run();
 
