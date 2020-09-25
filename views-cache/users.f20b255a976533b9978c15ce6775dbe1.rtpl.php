@@ -24,6 +24,7 @@
 
             <div class="box-body no-padding">
               <table class="table table-striped">
+                
                 <thead>
                   <tr>
                     <th style="width: 10px">#</th>

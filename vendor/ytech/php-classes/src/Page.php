@@ -45,9 +45,9 @@
 
 		// Pegar os dados chave e valor da variavel data passada no template;
 
-		private function setData($data = []){
+		private function setData($data = array()){
 				// Pega variavel e valor
-			foreach ($this->options["data"] as $key => $value) {
+			foreach ($data as $key => $value) {
 				$this->tpl->assign($key,$value);
 			}			
 		}
