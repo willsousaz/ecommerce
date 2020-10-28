@@ -193,8 +193,8 @@
 				$link = "http://www.ytechecommerce.com.br/admin/forgot/reset?code=$code";
 
 				$mailer = new Mailer($data["desemail"],$data["desperson"],"Redefinir Senha","forgot",array(
-					":name"=>$data["desperson"],
-					":link"=>$link				
+					"name"=>$data["desperson"],
+					"link"=>$link				
 				));
 
 				$mailer->send();
