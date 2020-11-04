@@ -4,12 +4,14 @@
 	namespace Ytech;
 
 	use Rain\Tpl;
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\Exception;
 
 
 	Class Mailer{
 
-		const USERNAME = "yuri.wilson18@gmail.com";
-		const PASSWORD = "#isaacayumi1820#";
+		const USERNAME = "yuri@ytechsolucoes.com.br";
+		const PASSWORD = "#Include2020#";
 
 		private $mail;
 
@@ -33,14 +35,15 @@
 
 		$html = $tpl->draw($tplName,true);
 
-			$this->mail = new \PHPMailer();
+		
+			$this->mail = new \PHPMailer( );
  			$this->mail->isSMTP(); // telling the class to use SMTP
- 			$this->mail->SMTPDebug = 0;
+ 			$this->mail->SMTPDebug = 2;
  			$this->mail->Debugoutput = 'html';
-  			$this->mail->Host       = "smtp.gmail.com"; // sets the SMTP server
-  			$this->mail->Port = 587;
-  			$this->mail->SMTPSecure = 'tls';
-  			$this->mail->SMTPAuth   = true;                  // enable SMTP authentication
+  			$this->mail->Host = "mail.ytechsolucoes.com.br"; // sets the SMTP server
+  			$this->mail->Port = 465;
+  			$this->mail->SMTPAuth   = true;   
+  			$this->mail->SMTPSecure = 'ssl';
   			$this->mail->Username   = Mailer::USERNAME; // SMTP account username
   			$this->mail->Password   = Mailer::PASSWORD;        // SMTP account password
   			$this->mail->setFrom(Mailer::USERNAME,'Ytech Soluções');
