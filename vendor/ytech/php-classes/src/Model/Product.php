@@ -19,6 +19,19 @@
 
 		return $sql->select("SELECT * FROM  tb_products ORDER BY desproduct");
 	}
+
+	public static function checklist($list){
+
+		foreach ($list as &$row) {
+			$p = new Product();
+
+			$p->setData($row);
+
+			$row = $p->getValues();
+		}
+
+		return $list;
+	}
 		
 
 	public function save()
@@ -129,6 +142,8 @@
 		$this->checkPhoto();
 
 	}
+
+	
 	
 
 	}
