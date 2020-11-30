@@ -106,7 +106,7 @@ public function getProducts($related = true){
 			
 		return $sql->select("
 
-				sELECT * FROM tb_products WHERE idproduct IN (
+				SELECT * FROM tb_products WHERE idproduct IN (
 					SELECT a.idproduct
 					FROM tb_products a
 					INNER JOIN tb_productscategories b ON a.idproduct = b.idproduct
@@ -118,7 +118,7 @@ public function getProducts($related = true){
 
 		return $sql->select("
 
-				sELECT * FROM tb_products WHERE idproduct NOT IN(
+				SELECT * FROM tb_products WHERE idproduct NOT IN(
 					SELECT a.idproduct
 					FROM tb_products a
 					INNER JOIN tb_productscategories b ON a.idproduct = b.idproduct
@@ -130,6 +130,34 @@ public function getProducts($related = true){
 	}
 }
 
+
+public function getProductsPage($page = 1 , $itemPerPage = 2){
+
+$start  = ($page - 1 ) * $itemPerPage;
+
+$sql = new Sql();
+
+$results = $sql->select("
+SELECT SQL_CALC_FOUND_ROWS * 
+FROM tb_products a 
+INNER JOIN tb_productscategories b ON a.idproduct = b.idproduct
+INNER JOIN tb_categories  c ON c.idcategory = b.idcategory
+WHERE c.idcategory = :idcategory
+LIMIT $start ,$itemPerPage ;
+",[
+	':idcategory'=>$this->getidcategory()
+]);
+
+$resultTotal  = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+
+return  [
+
+	'data'=>Product::checkList($results),
+	'total'=>(int)$resultTotal[0]["nrtotal"],
+	'pages'=>ceil($resultTotal[0]["nrtotal"] / $itemPerPage)
+];
+
+}
 
 public function addProduct(Product $product){
 	// Add produtos entre categorias ;
