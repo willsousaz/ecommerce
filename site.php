@@ -3,6 +3,8 @@
 use \Ytech\Page; 
 use \Ytech\Model\Product;
 use \Ytech\Model\Category;
+use \Ytech\Model\Cart;
+use \Ytech\Model\User;
 
 $app->get('/',function(){
 
@@ -60,4 +62,14 @@ $app->get("/products/:desurl",function($desurl){
 	]);
 });
 
+
+$app->get("/cart", function(){
+
+	$cart = Cart::getFromSession();
+
+	$page = new Page();
+
+	$page->setTpl("cart");
+
+});
  ?>
