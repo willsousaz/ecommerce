@@ -5,6 +5,8 @@
 	require_once("vendor/autoload.php");
 
 	use \Slim\Slim;
+	use \Ytech\Page;
+	use \Ytech\PageAdmin;
 
 	$app = new Slim();
 

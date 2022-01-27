@@ -9,6 +9,7 @@
 
 	use Rain\Tpl;
 
+
 // Classe do Projeto 
 	class Page{
 
@@ -21,7 +22,7 @@
 			"data" => []
 		];
 
-		public function __construct($opts = array(),$tpl_dir = "/views/")
+		public function __construct($opts = array(),$tpl_dir ="/views/")
 		{
 
 			$this->options = array_merge($this->defaults,$opts);

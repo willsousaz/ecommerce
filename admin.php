@@ -1,14 +1,13 @@
 <?php 
 
 use \Ytech\PageAdmin;
-use \Ytech\User;
+use \Ytech\Model\User;
 
 
 $app->get('/admin',function(){
 
 			// Verificar se ta logado e é Admin
 		User::verifyLogin();
-
 
 		$page = new PageAdmin();
 
