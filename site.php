@@ -6,6 +6,7 @@ use \Ytech\Model\Product;
 use \Ytech\Model\Category;
 use \Ytech\Model\Cart;
 use \Ytech\Model\User;
+use \Ytech\Model\Address;
 
 $app->get('/',function(){
 
@@ -68,7 +69,7 @@ $app->get("/cart", function(){
 
 
 	$cart = Cart::getFromSession();
-	
+
 	$page = new Page();
 
 	$page->setTpl("cart",[
@@ -138,6 +139,8 @@ $app->post("/cart/freight",function(){
 
 	$cart->setFreight($_POST['zipcode']);
 
+	
+
 	header("Location: /cart");
 
 	exit;
@@ -147,7 +150,16 @@ $app->post("/cart/freight",function(){
 
 $app->get("/checkout",function(){
 
+	$cart =  Cart::getFromSession();
 
+	$address = new Address();
+
+		$page = new Page();
+
+		$page->setTpl("checkout",[
+			'cart'=>$cart->getValues(),
+			'address'=>$address->getValues()
+		]);
 
 });
 		

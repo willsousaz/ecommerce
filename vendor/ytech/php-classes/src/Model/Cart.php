@@ -179,7 +179,7 @@ class Cart extends Model {
 
 	}
 
-	public function getProductsTotals(
+	public function getProductsTotals()
 	{
 
 		$sql = new Sql();
@@ -211,7 +211,15 @@ class Cart extends Model {
 		if ($totals['nrqtd'] > 0) {
 
 			if ($totals['vlheight'] < 2) $totals['vlheight'] = 2;
-			if ($totals['vllength'] < 16) $totals['vllength'] = 16;
+			if ($totals['vlheight'] > 100) $totals['vlheight'] = 50;
+
+			if ($totals['vllength'] < 15) $totals['vllength'] = 15;
+			if ($totals['vllength'] > 100) $totals['vllength'] = 50;
+
+			if ($totals['vlweight'] > 50) $totals['vlweight'] = 5;
+
+			if ($totals['vlwidth']<10) $totals['vlwidth']=10;
+			if ($totals['vlwidth']>100) $totals['vlwidth']=100;
 
 			$qs = http_build_query([
 				'nCdEmpresa'=>'',
